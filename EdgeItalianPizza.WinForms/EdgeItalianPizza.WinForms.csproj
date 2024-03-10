@@ -12,12 +12,12 @@
     <Folder Include="Forms\Client\" />
     <Folder Include="Forms\Courier\" />
     <Folder Include="Forms\Restaraunt\" />
-    <Folder Include="Services\" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\EdgeItalianPizza.Application\EdgeItalianPizza.Application.csproj" />
     <ProjectReference Include="..\EdgeItalianPizza.Domain\EdgeItalianPizza.Domain.csproj" />
+    <ProjectReference Include="..\EdgeItalianPizza.Infrastructrure.SqlServer\EdgeItalianPizza.Infrastructrure.SqlServer.csproj" />
   </ItemGroup>
 
 </Project>
