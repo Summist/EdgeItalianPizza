@@ -2,7 +2,7 @@
 
 public interface ILoggerService
 {
-    void Log(string message);
+    void Log(params string[] message);
 
-    void Error(string message);
+    void Error(params string[] message);
 }
