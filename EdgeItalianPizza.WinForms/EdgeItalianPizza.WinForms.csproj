@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Forms\Client\" />
+    <Folder Include="Forms\Courier\" />
+    <Folder Include="Forms\Restaraunt\" />
+    <Folder Include="Services\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\EdgeItalianPizza.Application\EdgeItalianPizza.Application.csproj" />
+    <ProjectReference Include="..\EdgeItalianPizza.Domain\EdgeItalianPizza.Domain.csproj" />
+  </ItemGroup>
+
+</Project>
