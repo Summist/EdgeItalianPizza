@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\EdgeItalianPizza.Application\EdgeItalianPizza.Application.csproj" />
+    <ProjectReference Include="..\EdgeItalianPizza.Domain\EdgeItalianPizza.Domain.csproj" />
+    <ProjectReference Include="..\EdgeItalianPizza.Infrastructrure.SqlServer\EdgeItalianPizza.Infrastructrure.SqlServer.csproj" />
+  </ItemGroup>
+
+</Project>

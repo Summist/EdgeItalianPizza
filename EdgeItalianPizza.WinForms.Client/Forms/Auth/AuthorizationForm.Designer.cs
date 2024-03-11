@@ -28,10 +28,23 @@ partial class AuthorizationForm
     /// </summary>
     private void InitializeComponent()
     {
-        this.components = new System.ComponentModel.Container();
-        this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-        this.ClientSize = new System.Drawing.Size(800, 450);
-        this.Text = "AuthorizationForm";
+        var resources = new System.ComponentModel.ComponentResourceManager(typeof(AuthorizationForm));
+        SuspendLayout();
+        // 
+        // AuthorizationForm
+        // 
+        AutoScaleDimensions = new SizeF(7F, 15F);
+        AutoScaleMode = AutoScaleMode.Font;
+        ClientSize = new Size(304, 441);
+        Font = new Font("Segoe UI Semibold", 9F);
+        FormBorderStyle = FormBorderStyle.FixedSingle;
+        Icon = (Icon)resources.GetObject("$this.Icon");
+        MaximizeBox = false;
+        MinimizeBox = false;
+        Name = "AuthorizationForm";
+        StartPosition = FormStartPosition.CenterScreen;
+        Text = "Edge Italian Pizza";
+        ResumeLayout(false);
     }
 
     #endregion
