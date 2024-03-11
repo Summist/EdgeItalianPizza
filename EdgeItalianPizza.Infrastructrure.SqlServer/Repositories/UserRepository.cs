@@ -11,28 +11,28 @@ public sealed class UserRepository : IUserRepository
 
     public UserRepository(AppDbContext dbContext) => _dbContext = dbContext;
 
-    public Task<bool> AddAsync(UserEntity user, int roleId)
+    public Task<bool> AddAsync(CustomerEntity user)
     {
         throw new NotImplementedException();
     }
 
-    public async Task<IEnumerable<UserEntity>> GetAllAsync()
+    public async Task<IEnumerable<CustomerEntity>> GetAllAsync()
     {
-        return await _dbContext.Users
+        return await _dbContext.Customers
             .AsNoTracking()
             .ToListAsync();
     }
 
-    public async Task<UserEntity?> GetByIdAsync(int id)
+    public async Task<CustomerEntity?> GetByIdAsync(int id)
     {
-        return await _dbContext.Users
+        return await _dbContext.Customers
             .AsNoTracking()
             .FirstOrDefaultAsync(u => u.Id == id);
     }
 
-    public async Task<UserEntity?> GetByLoginAndPasswordAsync(string login, string password)
+    public async Task<CustomerEntity?> GetByLoginAndPasswordAsync(string login, string password)
     {
-        return await _dbContext.Users
+        return await _dbContext.Customers
             .AsNoTracking()
             .FirstOrDefaultAsync(u =>
                 u.Login == login ||
@@ -45,7 +45,7 @@ public sealed class UserRepository : IUserRepository
         throw new NotImplementedException();
     }
 
-    public Task<bool> UpdateAsync(UserEntity user)
+    public Task<bool> UpdateAsync(CustomerEntity user)
     {
         throw new NotImplementedException();
     }

@@ -35,6 +35,11 @@ public sealed class CityConfiguration : IEntityTypeConfiguration<CityEntity>
             .HasMany(c => c.Deliveries)
             .WithOne(d => d.City)
             .HasForeignKey(d => d.CityId);
+
+        builder
+            .HasMany(c => c.Couriers)
+            .WithOne(c => c.City)
+            .HasForeignKey(c => c.CityId);
         #endregion
     }
 }

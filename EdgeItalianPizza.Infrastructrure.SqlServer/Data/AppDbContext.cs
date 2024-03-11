@@ -6,8 +6,8 @@ namespace EdgeItalianPizza.Infrastructrure.SqlServer.Data;
 
 public sealed class AppDbContext : DbContext
 {
-    public DbSet<UserEntity> Users { get; set; } = null!;
-    public DbSet<RoleEntity> Roles { get; set; } = null!;
+    public DbSet<CustomerEntity> Customers { get; set; } = null!;
+    public DbSet<CourierEntity> Couriers { get; set; } = null!;
     public DbSet<BasketEntity> Baskets { get; set; } = null!;
     public DbSet<CityEntity> Cities { get; set; } = null!;
     public DbSet<DeliveryEntity> Deliveries { get; set; } = null!;
@@ -30,8 +30,8 @@ public sealed class AppDbContext : DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder
-            .ApplyConfiguration(new UserConfiguration())
-            .ApplyConfiguration(new RoleConfiguration())
+            .ApplyConfiguration(new CustomerConfiguration())
+            .ApplyConfiguration(new CourierConfiguration())
             .ApplyConfiguration(new StatusConfiguration())
             .ApplyConfiguration(new SizeConfiguration())
             .ApplyConfiguration(new PizzaConfiguration())

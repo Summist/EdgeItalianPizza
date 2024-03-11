@@ -9,6 +9,4 @@ public sealed class UserDto
 
 
     public DateTime DateOfBirth { get; set; }
-
-    public int RoleId { get; set; }
 }

@@ -3,10 +3,10 @@
 public sealed class OrderEntity : EntityBase<long>
 {
     public long CustomerId { get; set; }
-    public UserEntity? Customer { get; set; } = null!;
+    public CustomerEntity? Customer { get; set; } = null!;
 
     public long CourierId { get; set; }
-    public UserEntity? Courier { get; set; } = null!;
+    public CourierEntity? Courier { get; set; } = null!;
 
     public DateTime DateCreated { get; set; }
 

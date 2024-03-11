@@ -29,6 +29,10 @@ public sealed class PizzaConfiguration : IEntityTypeConfiguration<PizzaEntity>
             .IsRequired()
             .HasColumnName("description")
             .HasColumnType("varchar(100)");
+
+        builder
+            .Property(p => p.Discount)
+            .HasColumnName("discount");
         #endregion
 
         #region Настройка связей
@@ -44,9 +48,9 @@ public sealed class PizzaConfiguration : IEntityTypeConfiguration<PizzaEntity>
                 "pizzas_toppings",
                 pt =>
                 {
-                    pt.HasKey("PizzaId", "ToppingId");
-                    pt.Property("PizzaId").HasColumnName("pizza_id");
-                    pt.Property("ToppingId").HasColumnName("ToppingId");
+                    //pt.HasKey("PizzasId", "ToppingsId");
+                    pt.Property("PizzasId").HasColumnName("pizza_id");
+                    pt.Property("ToppingsId").HasColumnName("topping_id");
                 });
         #endregion
     }

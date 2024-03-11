@@ -19,6 +19,12 @@ public sealed class ToppingConfiguration : IEntityTypeConfiguration<ToppingEntit
             .ValueGeneratedOnAdd();
 
         builder
+            .Property(t => t.Name)
+            .HasColumnName("topping_name")
+            .IsRequired()
+            .HasColumnType("varchar(50)");
+
+        builder
             .Property(t => t.PhotoName)
             .IsRequired()
             .HasColumnName("photo_name")
@@ -38,9 +44,9 @@ public sealed class ToppingConfiguration : IEntityTypeConfiguration<ToppingEntit
                 "pizzas_toppings",
                 pt =>
                 {
-                    pt.HasKey("ToppingId", "PizzaId");
-                    pt.Property("ToppingId").HasColumnName("topping_id");
-                    pt.Property("PizzaId").HasColumnName("pizza_id");
+                    //pt.HasKey("ToppingsId", "PizzasId");
+                    pt.Property("ToppingsId").HasColumnName("topping_id");
+                    pt.Property("PizzasId").HasColumnName("pizza_id");
                 });
 
         builder

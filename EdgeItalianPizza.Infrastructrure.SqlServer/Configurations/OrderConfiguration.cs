@@ -61,9 +61,9 @@ public sealed class OrderConfiguration : IEntityTypeConfiguration<OrderEntity>
                 "orders_baskets",
                 ob =>
                 {
-                    ob.HasKey("OrderId", "BasketId");
-                    ob.Property("OrderId").HasColumnName("order_id");
-                    ob.Property("BasketId").HasColumnName("basket_id");
+                    //ob.HasKey("OrdersId", "BasketsId");
+                    ob.Property("OrdersId").HasColumnName("order_id");
+                    ob.Property("BasketsId").HasColumnName("basket_id");
                 });
 
         builder

@@ -45,9 +45,9 @@ public sealed class BasketConfiguration : IEntityTypeConfiguration<BasketEntity>
                 "orders_baskets",
                 ob =>
                 {
-                    ob.HasKey("BasketId", "OrderId");
-                    ob.Property("BasketId").HasColumnName("basket_id");
-                    ob.Property("OrderId").HasColumnName("order_id");
+                    //ob.HasKey("BaskestId", "OrdersId");
+                    ob.Property("BasketsId").HasColumnName("basket_id");
+                    ob.Property("OrdersId").HasColumnName("order_id");
                 }
             );
         #endregion

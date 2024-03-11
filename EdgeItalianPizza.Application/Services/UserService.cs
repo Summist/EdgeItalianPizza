@@ -32,7 +32,7 @@ public sealed class UserService : IUserService
 
             string hashPassword = hashService.Hash(password);
 
-            UserEntity? searchedUser = await _userRepository.GetByLoginAndPasswordAsync(login, password);
+            CustomerEntity? searchedUser = await _userRepository.GetByLoginAndPasswordAsync(login, password);
 
             if (searchedUser is null)
             {
@@ -45,7 +45,6 @@ public sealed class UserService : IUserService
                 FisrtName = searchedUser.FisrtName,
                 LastName = searchedUser.LastName,
                 DateOfBirth = searchedUser.DateOfBirth,
-                RoleId = searchedUser.RoleId
             };
 
             return userDto;

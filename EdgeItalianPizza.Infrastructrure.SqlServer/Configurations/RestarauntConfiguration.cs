@@ -1,4 +1,5 @@
-﻿using EdgeItalianPizza.Domain.Entities;
+﻿using EdgeItalianPizza.Domain;
+using EdgeItalianPizza.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -17,6 +18,18 @@ public sealed class RestarauntConfiguration : IEntityTypeConfiguration<Restaraun
             .Property(r => r.Id)
             .HasColumnName("restaraunt_id")
             .ValueGeneratedOnAdd();
+
+        builder
+            .Property(r => r.Login)
+            .IsRequired()
+            .HasColumnName("login")
+            .HasColumnType($"varchar({Constants.LOGIN_MAX_LENGTH})");
+
+        builder
+            .Property(r => r.Password)
+            .IsRequired()
+            .HasColumnName("password")
+            .HasColumnType($"varchar({Constants.PASSWORD_MAX_LENGTH})");
 
         builder
             .Property(r => r.Address)

@@ -6,4 +6,5 @@ public sealed class CityEntity : EntityBase<int>
 
     public ICollection<RestarauntEntity> Restaraunts { get; set; } = [];
     public ICollection<DeliveryEntity> Deliveries { get; set; } = [];
+    public ICollection<CourierEntity> Couriers { get; set; } = [];
 }
