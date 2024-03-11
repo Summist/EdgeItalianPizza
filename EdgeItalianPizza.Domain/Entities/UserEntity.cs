@@ -12,4 +12,6 @@ public sealed class UserEntity : EntityBase<long>
 
     public int RoleId { get; set; }
     public RoleEntity? Role { get; set; } = null!;
+
+    public ICollection<OrderEntity> Orders { get; set; } = [];
 }

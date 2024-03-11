@@ -1,4 +1,5 @@
 ﻿using EdgeItalianPizza.Domain.Entities;
+using EdgeItalianPizza.Infrastructrure.SqlServer.Configurations;
 using Microsoft.EntityFrameworkCore;
 
 namespace EdgeItalianPizza.Infrastructrure.SqlServer.Data;
@@ -19,15 +20,35 @@ public sealed class AppDbContext : DbContext
     public DbSet<StatusEntity> Statuses { get; set; } = null!;
     public DbSet<ToppingEntity> Toppings { get; set; } = null!;
 
-    public AppDbContext() { }/*=> Database.EnsureCreated();*/
+    public AppDbContext() { }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.UseSqlServer();
+        optionsBuilder.UseSqlServer("Server=localhost;Database=EdgeItalianPizza;Trusted_Connection=True;TrustServerCertificate=True");
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder
+            .ApplyConfiguration(new UserConfiguration())
+            .ApplyConfiguration(new RoleConfiguration())
+            .ApplyConfiguration(new StatusConfiguration())
+            .ApplyConfiguration(new SizeConfiguration())
+            .ApplyConfiguration(new PizzaConfiguration())
+            .ApplyConfiguration(new ToppingConfiguration())
+            .ApplyConfiguration(new CityConfiguration())
+            .ApplyConfiguration(new DeliveryConfiguration())
+            .ApplyConfiguration(new RestarauntConfiguration())
+            .ApplyConfiguration(new PizzaSizeConfiguration())
+            .ApplyConfiguration(new OrderConfiguration())
+            .ApplyConfiguration(new BasketConfiguration())
+            .ApplyConfiguration(new ProductConfiguration());
 
+        foreach (var relationship in modelBuilder.Model.GetEntityTypes().SelectMany(e => e.GetForeignKeys()))
+        {
+            relationship.DeleteBehavior = DeleteBehavior.Restrict;
+        }
+
+        base.OnModelCreating(modelBuilder);
     }
 }
