@@ -1,7 +1,9 @@
 ﻿namespace EdgeItalianPizza.Application.DTOs;
 
-public sealed class UserDto
+public sealed class AuthorizationUserDto
 {
+    public int Status { get; set; }
+
     public long Id { get; set; }
 
     public string FisrtName { get; set; }

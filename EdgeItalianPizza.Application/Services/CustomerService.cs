@@ -5,18 +5,18 @@ using EdgeItalianPizza.Domain.Interfaces.Repository;
 
 namespace EdgeItalianPizza.Application.Services;
 
-public sealed class UserService : IUserService
+public sealed class CustomerService : ICustomerService
 {
-    private readonly IUserRepository _userRepository;
+    private readonly ICustomerRepository _userRepository;
     private readonly ILoggerService _loggerService;
 
-    public UserService(IUserRepository userRepository, ILoggerService loggerService)
+    public CustomerService(ICustomerRepository userRepository, ILoggerService loggerService)
     {
         _userRepository = userRepository;
         _loggerService = loggerService;
     }
 
-    public async Task<UserDto?> GetAuthorization(
+    public async Task<AuthorizationUserDto> GetAuthorization(
         string login,
         string password,
         ILoginValidateService loginValidateService,
@@ -27,7 +27,7 @@ public sealed class UserService : IUserService
         {
             if (!IsInputValidate(login, password, loginValidateService, passwordValidateService))
             {
-                return null;
+                return new AuthorizationUserDto() { Status = -1 };
             }
 
             string hashPassword = hashService.Hash(password);
@@ -36,11 +36,12 @@ public sealed class UserService : IUserService
 
             if (searchedUser is null)
             {
-                return null;
+                return new AuthorizationUserDto() { Status = 0 };
             }
 
-            var userDto = new UserDto()
+            var userDto = new AuthorizationUserDto()
             {
+                Status = 1,
                 Id = searchedUser.Id,
                 FisrtName = searchedUser.FisrtName,
                 LastName = searchedUser.LastName,
@@ -69,7 +70,7 @@ public sealed class UserService : IUserService
             return false;
         }
 
-        return loginValidateService.IsValidate(login) &&
+        return loginValidateService.IsValidate(login) &
                passwordValidateService.IsValidate(password);
     }
 }

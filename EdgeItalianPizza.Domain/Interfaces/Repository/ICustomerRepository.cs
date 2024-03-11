@@ -2,7 +2,7 @@
 
 namespace EdgeItalianPizza.Domain.Interfaces.Repository;
 
-public interface IUserRepository
+public interface ICustomerRepository
 {
     Task<IEnumerable<CustomerEntity>> GetAllAsync();
 

@@ -5,11 +5,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace EdgeItalianPizza.Infrastructrure.SqlServer.Repositories;
 
-public sealed class UserRepository : IUserRepository
+public sealed class CustomerRepository : ICustomerRepository
 {
     private readonly AppDbContext _dbContext;
 
-    public UserRepository(AppDbContext dbContext) => _dbContext = dbContext;
+    public CustomerRepository(AppDbContext dbContext) => _dbContext = dbContext;
 
     public Task<bool> AddAsync(CustomerEntity user)
     {
