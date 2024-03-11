@@ -1,6 +1,6 @@
-﻿namespace EdgeItalianPizza.WinForms.Forms;
+﻿namespace EdgeItalianPizza.WinForms.Restaraunt.Forms.Auth;
 
-partial class RegistrationForm
+partial class AuthorizationForm
 {
     /// <summary>
     /// Required designer variable.
@@ -31,7 +31,7 @@ partial class RegistrationForm
         this.components = new System.ComponentModel.Container();
         this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
         this.ClientSize = new System.Drawing.Size(800, 450);
-        this.Text = "RegistrationForm";
+        this.Text = "AuthorizationForm";
     }
 
     #endregion

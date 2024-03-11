@@ -1,6 +1,4 @@
-using EdgeItalianPizza.WinForms.Forms;
-
-namespace EdgeItalianPizza.WinForms;
+namespace EdgeItalianPizza.WinForms.Client;
 
 internal static class Program
 {
@@ -13,6 +11,6 @@ internal static class Program
         // To customize application configuration such as set high DPI settings or default font,
         // see https://aka.ms/applicationconfiguration.
         ApplicationConfiguration.Initialize();
-        System.Windows.Forms.Application.Run(new AuthorizationForm());
+        System.Windows.Forms.Application.Run(new Form1());
     }
 }
