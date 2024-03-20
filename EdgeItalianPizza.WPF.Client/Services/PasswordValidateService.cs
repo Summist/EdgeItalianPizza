@@ -1,24 +1,15 @@
 ﻿using EdgeItalianPizza.Application.Interfaces;
 using EdgeItalianPizza.Domain;
-using EdgeItalianPizza.WPF.Client.Windows.Auth;
 using System.Text.RegularExpressions;
 
 namespace EdgeItalianPizza.WPF.Client.Services;
 
 public sealed class PasswordValidateService : IPasswordValidateService
 {
-    private readonly AuthorizationWindow _window;
-
-    public PasswordValidateService(AuthorizationWindow window)
-    {
-        _window = window;
-    }
-
     public bool IsValidate(string password)
     {
         if (string.IsNullOrWhiteSpace(password))
         {
-            _window.passwordErrorLabel.Text = "Поле с паролем обязательно для заполнения";
             return false;
         }
 
@@ -36,7 +27,6 @@ public sealed class PasswordValidateService : IPasswordValidateService
 
         if (password.Length != counter)
         {
-            _window.passwordErrorLabel.Text = "Невозможный пароль";
             return false;
         }
 
@@ -47,13 +37,11 @@ public sealed class PasswordValidateService : IPasswordValidateService
     {
         if (password.Length < Constants.PASSWORD_MIN_LENGTH)
         {
-            _window.passwordErrorLabel.Text = $"Длина пароля не может быть меньше {Constants.PASSWORD_MIN_LENGTH}";
             return false;
         }
 
         if (password.Length > Constants.PASSWORD_MAX_LENGTH)
         {
-            _window.passwordErrorLabel.Text = $"Длина пароля не может быть больше {Constants.PASSWORD_MAX_LENGTH}";
             return false;
         }
 
@@ -66,7 +54,6 @@ public sealed class PasswordValidateService : IPasswordValidateService
 
         if (count == 0)
         {
-            _window.passwordErrorLabel.Text = errorMassage;
         }
 
         return count;
