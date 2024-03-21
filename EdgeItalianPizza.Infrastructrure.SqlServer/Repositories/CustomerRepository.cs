@@ -35,7 +35,7 @@ public sealed class CustomerRepository : ICustomerRepository
         return await _dbContext.Customers
             .AsNoTracking()
             .FirstOrDefaultAsync(u =>
-                u.Login == login ||
+                u.Login == login &&
                 u.Password == password
             );
     }
