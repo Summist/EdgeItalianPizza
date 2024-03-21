@@ -1,0 +1,26 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:vm="clr-namespace:EdgeItalianPizza.WPF.Client.MVVM.ViewModel"
+                    xmlns:view="clr-namespace:EdgeItalianPizza.WPF.Client.MVVM.View">
+
+    <!--<DataTemplate DataType="{x:Type vm:PizzasViewModel}">
+        <view:Pizzas/>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:ComboViewModel}">
+        <view:Combo/>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:PersonalCabinetViewModel}">
+        <view:PersonalCabinet/>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:BasketViewModel}">
+        <view:Basket/>
+    </DataTemplate>
+    
+    <DataTemplate DataType="{x:Type vm:AuthorizationViewModel}">
+        <view:Authorization/>
+    </DataTemplate>-->
+
+</ResourceDictionary>

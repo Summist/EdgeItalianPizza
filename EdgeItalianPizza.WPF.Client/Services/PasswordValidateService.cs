@@ -6,10 +6,13 @@ namespace EdgeItalianPizza.WPF.Client.Services;
 
 public sealed class PasswordValidateService : IPasswordValidateService
 {
+    public string ErrorMessage { get; private set; }
+
     public bool IsValidate(string password)
     {
         if (string.IsNullOrWhiteSpace(password))
         {
+            ErrorMessage = "Поле с логином обязятельно для заполнения";
             return false;
         }
 
@@ -27,6 +30,7 @@ public sealed class PasswordValidateService : IPasswordValidateService
 
         if (password.Length != counter)
         {
+            ErrorMessage = $"Невозможный логин";
             return false;
         }
 
@@ -37,11 +41,13 @@ public sealed class PasswordValidateService : IPasswordValidateService
     {
         if (password.Length < Constants.PASSWORD_MIN_LENGTH)
         {
+            ErrorMessage = $"Пароль не может быть меньше {Constants.PASSWORD_MIN_LENGTH} символов";
             return false;
         }
 
         if (password.Length > Constants.PASSWORD_MAX_LENGTH)
         {
+            ErrorMessage = $"Пароль не может быть больше {Constants.PASSWORD_MAX_LENGTH} символов";
             return false;
         }
 
@@ -54,6 +60,7 @@ public sealed class PasswordValidateService : IPasswordValidateService
 
         if (count == 0)
         {
+            ErrorMessage = errorMassage;
         }
 
         return count;

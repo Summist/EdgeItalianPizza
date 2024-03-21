@@ -1,4 +1,8 @@
-﻿using EdgeItalianPizza.WPF.Client.Pages;
+﻿using EdgeItalianPizza.Application.Interfaces;
+using EdgeItalianPizza.Application.Services;
+using EdgeItalianPizza.Infrastructrure.SqlServer.Data;
+using EdgeItalianPizza.WPF.Client.MVVM.Model;
+using EdgeItalianPizza.WPF.Client.MVVM.ViewModel;
 using System.Windows;
 using System.Windows.Input;
 
@@ -9,14 +13,17 @@ namespace EdgeItalianPizza.WPF.Client
     /// </summary>
     public partial class MainWindow : Window
     {
+        private readonly ILoggerService _logger;
+        private UserModel _user;
+
         public MainWindow()
         {
             InitializeComponent();
-        }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-            frame.Content = new PizzasPage();
+            _logger = new FileLoggerService();
+            _user = new();
+
+            DataContext = new NavigationViewModel(_logger);
         }
 
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)
@@ -35,26 +42,6 @@ namespace EdgeItalianPizza.WPF.Client
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
             System.Windows.Application.Current.Shutdown();
-        }
-
-        private void PizzasButton_Click(object sender, RoutedEventArgs e)
-        {
-            frame.Content = new PizzasPage();
-        }
-
-        private void ComboButton_Click(object sender, RoutedEventArgs e)
-        {
-            frame.Content = new ComboPage();
-        }
-
-        private void PersonalCabinetButton_Click(object sender, RoutedEventArgs e)
-        {
-            frame.Content = new PersonalCabinetPage();
-        }
-
-        private void BasketButton_Click(object sender, RoutedEventArgs e)
-        {
-            frame.Content = new BasketPage();
         }
     }
 }

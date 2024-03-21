@@ -3,15 +3,31 @@
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>net8.0-windows</TargetFramework>
-    <Nullable>enable</Nullable>
+    <Nullable>annotations</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Icons\logo.png" />
+    <None Remove="Icons\pizza50.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\EdgeItalianPizza.Application\EdgeItalianPizza.Application.csproj" />
     <ProjectReference Include="..\EdgeItalianPizza.Domain\EdgeItalianPizza.Domain.csproj" />
     <ProjectReference Include="..\EdgeItalianPizza.Infrastructrure.SqlServer\EdgeItalianPizza.Infrastructrure.SqlServer.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Images\" />
+    <Folder Include="Interfaces\" />
+    <Folder Include="Utilities\Controls\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Icons\logo.png" />
+    <Resource Include="Icons\pizza50.png" />
   </ItemGroup>
 
 </Project>

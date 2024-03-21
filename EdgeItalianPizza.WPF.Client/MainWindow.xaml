@@ -3,14 +3,14 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:EdgeItalianPizza.WPF.Client"
         mc:Ignorable="d"
-        Width="1280" Height="720"
+        MaxWidth="1280" MaxHeight="720"
+        MinWidth="1170" MinHeight="720"
         WindowStyle="None"
         AllowsTransparency="True"
         ResizeMode="CanResizeWithGrip"
-        Loaded="Window_Loaded">
-    
+        WindowStartupLocation="CenterScreen">
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>
@@ -23,12 +23,7 @@
                 MouseDown="Border_MouseDown">
 
             <Grid HorizontalAlignment="Stretch">
-
-                <Label Content="Edge Italian Pizza"
-                       Foreground="#F5F5F5"
-                       FontSize="14"
-                       FontWeight="SemiBold"/>
-
+                
                 <StackPanel Orientation="Horizontal"
                             HorizontalAlignment="Right">
 
@@ -58,58 +53,48 @@
 
         <Grid Grid.Row="1"
               Background="#FF8C00">
-            
-            <StackPanel Orientation="Horizontal"
-                        HorizontalAlignment="Left">
 
-                <Button Content="Пиццы"
-                        Foreground="#F5F5F5"
-                        FontSize="20"
-                        FontWeight="SemiBold"
-                        Background="Transparent"
-                        BorderThickness="0"
-                        Margin="10, 0"
-                        Padding="10, 0"
-                        Click="PizzasButton_Click"/>
+            <Grid Width="1170">
+                
+                <StackPanel Orientation="Horizontal">
 
-                <Button Content="Комбо"
-                        Foreground="#F5F5F5"
-                        FontSize="20"
-                        FontWeight="SemiBold"
-                        Background="Transparent"
-                        BorderThickness="0"
-                        Margin="10, 0"
-                        Padding="10, 0"
-                        Click="ComboButton_Click"/>
-            </StackPanel>
+                    <Button Content="Пиццы"
+                            Style="{StaticResource HeaderButtonStyle}"
+                            Command="{Binding PizzasCommand}"/>
 
-            <StackPanel Orientation="Horizontal"
-                        HorizontalAlignment="Right">
+                    <Button Content="Комбо"
+                            Style="{StaticResource HeaderButtonStyle}"
+                            Command="{Binding ComboCommand}"/>
+                </StackPanel>
 
-                <Button Content="Личный кабинет"
-                        Foreground="#F5F5F5"
-                        FontSize="20"
-                        FontWeight="SemiBold"
-                        Background="Transparent"
-                        BorderThickness="0"
-                        Margin="10, 0"
-                        Padding="10, 0"
-                        Click="PersonalCabinetButton_Click"/>
+                <Button Width="200"
+                        Height="70"
+                        Padding="0"
+                        HorizontalAlignment="Center"
+                        Style="{StaticResource LogoStyle}"
+                        Command="{Binding PizzasCommand}">
+                    <Image Source="Icons/logo.png"/>
+                </Button>
 
-                <Button Content="Корзина"
-                        Foreground="#F5F5F5"
-                        FontSize="20"
-                        FontWeight="SemiBold"
-                        Background="Transparent"
-                        BorderThickness="0"
-                        Margin="10, 0"
-                        Padding="10, 0"
-                        Click="BasketButton_Click"/>
-            </StackPanel>
+                <StackPanel Orientation="Horizontal"
+                            HorizontalAlignment="Right">
+
+                    <Button Content="Личный кабинет"
+                            Style="{StaticResource HeaderButtonStyle}"
+                            Command="{Binding PersonalCabinetCommand}"/>
+
+                    <Button Content="Корзина"
+                            Style="{StaticResource HeaderButtonStyle}"
+                            Command="{Binding BasketCommand}"/>
+                </StackPanel>
+            </Grid>
         </Grid>
 
-        <Frame Grid.Row="2"
-               Name="frame"
-               NavigationUIVisibility="Hidden"/>
+        <Grid Grid.Row="2"
+              Width="1170">
+
+            <ContentControl x:Name="Pages"
+                            Content="{Binding CurrentView}"/>
+        </Grid>
     </Grid>
 </Window>
