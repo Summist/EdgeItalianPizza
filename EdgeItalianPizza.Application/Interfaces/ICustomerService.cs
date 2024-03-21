@@ -4,7 +4,7 @@ namespace EdgeItalianPizza.Application.Interfaces;
 
 public interface ICustomerService
 {
-    Task<AuthorizationUserDto> GetAuthorization(
+    Task<ResultDto<AuthCustomerDto>> GetAuthorization(
         string login,
         string password,
         ILoginValidateService loginValidateService,

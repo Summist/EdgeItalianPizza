@@ -1,6 +1,7 @@
 ﻿using EdgeItalianPizza.Application.DTOs;
 using EdgeItalianPizza.Application.Interfaces;
 using EdgeItalianPizza.Domain.Entities;
+using EdgeItalianPizza.Domain.Enums;
 using EdgeItalianPizza.Domain.Interfaces.Repository;
 
 namespace EdgeItalianPizza.Application.Services;
@@ -16,7 +17,7 @@ public sealed class CustomerService : ICustomerService
         _loggerService = loggerService;
     }
 
-    public async Task<AuthorizationUserDto> GetAuthorization(
+    public async Task<ResultDto<AuthCustomerDto>> GetAuthorization(
         string login,
         string password,
         ILoginValidateService loginValidateService,
@@ -27,7 +28,7 @@ public sealed class CustomerService : ICustomerService
         {
             if (!IsInputValidate(login, password, loginValidateService, passwordValidateService))
             {
-                return new AuthorizationUserDto() { Status = -1 };
+                return new(null, Status.Error);
             }
 
             string hashPassword = hashService.Hash(password);
@@ -36,24 +37,23 @@ public sealed class CustomerService : ICustomerService
 
             if (searchedUser is null)
             {
-                return new AuthorizationUserDto() { Status = 0 };
+                return new(new(), Status.Filure);
             }
 
-            var userDto = new AuthorizationUserDto()
+            var userDto = new AuthCustomerDto()
             {
-                Status = 1,
                 Id = searchedUser.Id,
-                FisrtName = searchedUser.FisrtName,
+                FirstName = searchedUser.FisrtName,
                 LastName = searchedUser.LastName,
                 DateOfBirth = searchedUser.DateOfBirth,
             };
 
-            return userDto;
+            return new(userDto, Status.Success);
         }
         catch (Exception ex)
         {
             _loggerService.Error(ex.Message);
-            return null;
+            return new(new(), Status.Error);
         }
     }
 
