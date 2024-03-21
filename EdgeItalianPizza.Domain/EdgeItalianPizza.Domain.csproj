@@ -6,4 +6,9 @@
     <Nullable>annotations</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Images\Pizza\" />
+    <Folder Include="Images\Topping\" />
+  </ItemGroup>
+
 </Project>
