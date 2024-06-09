@@ -1,0 +1,108 @@
+﻿<UserControl x:Class="EdgeItalianPizza.UI.MVVM.View.RestaurantAttach"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:utilities="clr-namespace:EdgeItalianPizza.UI.Share.Utilities" 
+             xmlns:viewmodel="clr-namespace:EdgeItalianPizza.UI.MVVM.ViewModel" 
+             d:DataContext="{d:DesignInstance Type=viewmodel:RestaurantAttachViewModel}"
+             mc:Ignorable="d" 
+             d:DesignHeight="1080" d:DesignWidth="1920">
+    <UserControl.Resources>
+
+        <ResourceDictionary>
+
+            <ResourceDictionary.MergedDictionaries>
+
+                <ResourceDictionary Source="..\..\..\Styles\SecondButton.xaml" />
+                <ResourceDictionary Source="..\..\..\Styles\FormTitle.xaml" />
+                <ResourceDictionary Source="..\..\..\Styles\TextBox.xaml" />
+                <ResourceDictionary Source="..\..\..\Styles\FormSubTitle.xaml" />
+                <ResourceDictionary Source="..\..\..\Styles\ErrorMessage.xaml" />
+                <ResourceDictionary Source="..\..\..\Styles\Border.xaml" />
+
+            </ResourceDictionary.MergedDictionaries>
+            
+        </ResourceDictionary>
+        
+    </UserControl.Resources>
+    
+    <Grid Background="LightGray">
+
+        <Border Style="{StaticResource Border}"
+                Padding="400, 45">
+        
+            <Grid Background="White">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="65*"/>
+                    <RowDefinition Height="35*"/>
+                </Grid.RowDefinitions>
+
+                <Grid Background="{StaticResource SecondColor}">
+                    
+                    <TextBlock Text="Прикрепление к заведению"
+                               Style="{StaticResource FormTitle}" />
+                    
+                </Grid>
+
+                <StackPanel Grid.Row="1"
+                            VerticalAlignment="Center"
+                            Margin="50, 0">
+
+                    <StackPanel Margin="0, 45">
+
+                        <TextBlock Text="Логин"
+                                   Style="{StaticResource SubTitle}" />
+
+                        <TextBox Name="LoginTextBox"
+                                 Text="{Binding Model.Login,
+                                                Mode=TwoWay, 
+                                                UpdateSourceTrigger=PropertyChanged, 
+                                                ValidatesOnDataErrors=True}"
+                                 Style="{StaticResource TextBox}"
+                                 Validation.ErrorTemplate="{x:Null}"/>
+
+                        <TextBlock Text="{Binding Path=(Validation.Errors)[0].ErrorContent, ElementName=LoginTextBox}"
+                                   Style="{StaticResource ErrorMessage}" />
+
+                    </StackPanel>
+
+                    <StackPanel Margin="0, 45">
+
+                        <TextBlock Text="Пароль"
+                                   Style="{StaticResource SubTitle}" />
+                        
+                        <PasswordBox Name="PasswordTextBox"
+                                     Style="{StaticResource PasswordBox}" 
+                                     utilities:PasswordBoxHelper.BindPassword="True" 
+                                     utilities:PasswordBoxHelper.BoundPassword="{Binding Model.Password,
+                                                                                         Mode=TwoWay,
+                                                                                         UpdateSourceTrigger=PropertyChanged,
+                                                                                         ValidatesOnDataErrors=True}" 
+                                     Validation.ErrorTemplate="{x:Null}" />
+
+                        <TextBlock Text="{Binding Path=(Validation.Errors)[0].ErrorContent, ElementName=PasswordTextBox}"
+                                   Style="{StaticResource ErrorMessage}"  />
+
+                    </StackPanel>
+
+                </StackPanel>
+
+                <StackPanel Grid.Row="2"
+                            Margin="35, 0">
+                    
+                    <Button Content="Прикрепить"
+                            Style="{StaticResource SecondButton}"
+                            Command="{Binding AttachCommandAsync}" />
+                    
+                    <TextBlock Text="{Binding AttachErrorMessage}"
+                               Style="{StaticResource ErrorMessage}"
+                               HorizontalAlignment="Center" />
+                    
+                </StackPanel>
+            
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>

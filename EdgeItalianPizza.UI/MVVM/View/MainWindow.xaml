@@ -1,0 +1,59 @@
+﻿<Window x:Class="EdgeItalianPizza.UI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+        xmlns:viewmodel="clr-namespace:EdgeItalianPizza.UI.MVVM.ViewModel" 
+        d:DataContext="{d:DesignInstance Type=viewmodel:MainViewModel}"
+        mc:Ignorable="d"
+        Height="1080" Width="1920"
+        WindowStartupLocation="CenterScreen"
+        WindowState="Maximized"
+        AllowsTransparency="True"
+        WindowStyle="None">
+    <Window.Resources>
+
+        <ResourceDictionary>
+
+            <ResourceDictionary.MergedDictionaries>
+
+                <ResourceDictionary Source="..\..\Styles\MenuButton.xaml" />
+
+            </ResourceDictionary.MergedDictionaries>
+
+        </ResourceDictionary>
+
+    </Window.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Background="{StaticResource SecondColor}">
+                
+            <RadioButton Content="Меню"
+                         GroupName="MenuButton"
+                         Style="{StaticResource MenuButton}"
+                         IsChecked="{Binding IsMenuSelect}"
+                         Command="{Binding NavigateToMenuCommand}" />
+
+            <RadioButton Content="Личный кабинет"
+                         GroupName="MenuButton"
+                         Style="{StaticResource MenuButton}"
+                         IsChecked="{Binding IsPersonalCabinetSelect}"
+                         Command="{Binding NavigateToPersonalCabinetCommand}" />
+
+            <RadioButton Content="Корзина"
+                         GroupName="MenuButton"
+                         Style="{StaticResource MenuButton}"
+                         IsChecked="{Binding IsBasketSelect}"
+                         Command="{Binding NavigateToBasketCommand}" />
+                
+        </StackPanel>
+
+        <ContentControl Grid.Column="1" Content="{Binding Navigation.CurrentView}" />
+        
+    </Grid>
+</Window>

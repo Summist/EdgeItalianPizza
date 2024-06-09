@@ -1,0 +1,61 @@
+﻿<UserControl x:Class="EdgeItalianPizza.UI.MVVM.View.Code"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:viewmodel="clr-namespace:EdgeItalianPizza.UI.MVVM.ViewModel" xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+             d:DataContext="{d:DesignInstance Type=viewmodel:CodeViewModel}"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+
+        <ResourceDictionary>
+
+            <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+
+            <ResourceDictionary.MergedDictionaries>
+
+                <ResourceDictionary Source="..\..\..\Styles\PrimaryButton.xaml" />
+
+            </ResourceDictionary.MergedDictionaries>
+
+        </ResourceDictionary>
+
+    </UserControl.Resources>
+    
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadedCommand}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+
+    <Grid>
+
+        <StackPanel VerticalAlignment="Center">
+            
+            <TextBlock Text="Спасибо за оформление заказа!"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       FontSize="36"
+                       FontFamily="{StaticResource DodoRounded}"
+                       FontWeight="Medium" 
+                       Margin="0, 0, 0, 50"/>
+        
+            <TextBlock Text="{Binding Code, StringFormat={}Ваш код: {0}}"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       FontSize="32"
+                       FontFamily="{StaticResource DodoRounded}"
+                       FontWeight="Medium"
+                       Margin="0, 15"/>
+
+            <Button Content="Далее"
+                    Style="{StaticResource PrimaryButton}"
+                    Width="320"
+                    Height="80"
+                    Margin="0, 120, 0, 0"
+                    Command="{Binding NextCommand}" />
+            
+        </StackPanel>
+    </Grid>
+</UserControl>

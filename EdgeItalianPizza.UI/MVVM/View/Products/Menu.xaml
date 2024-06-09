@@ -1,0 +1,76 @@
+﻿<UserControl x:Class="EdgeItalianPizza.UI.MVVM.View.Menu"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:viewmodel="clr-namespace:EdgeItalianPizza.UI.MVVM.ViewModel" xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+             d:DataContext="{d:DesignInstance Type=viewmodel:MenuViewModel}"
+             mc:Ignorable="d" 
+             d:DesignHeight="1080" d:DesignWidth="1920">
+    <UserControl.Resources>
+
+        <ResourceDictionary>
+
+            <ResourceDictionary.MergedDictionaries>
+
+                <ResourceDictionary Source="..\..\..\Styles\MenuButton.xaml" />
+                <ResourceDictionary Source="..\..\..\Styles\FormTitle.xaml" />
+                <ResourceDictionary Source="..\..\..\Styles\Border.xaml" />
+
+            </ResourceDictionary.MergedDictionaries>
+
+        </ResourceDictionary>
+
+    </UserControl.Resources>
+    
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadCommand}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+
+    <Grid Background="LightGray">
+        
+        <Border Padding="65, 45"
+                Style="{StaticResource Border}">
+
+            <Grid Background="White">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition/>
+                    <RowDefinition Height="55"/>
+                </Grid.RowDefinitions>
+
+                <Grid Background="{StaticResource SecondColor}">
+                    
+                    <TextBlock Text="Меню"
+                               Style="{StaticResource FormTitle}" />
+                    
+                </Grid>
+
+                <ContentControl Grid.Row="1" Content="{Binding Navigation.CurrentView}"  />
+
+                <StackPanel Grid.Row="2"
+                            Background="{StaticResource SecondColor}"
+                            Orientation="Horizontal">
+
+                    <RadioButton Content="Пиццы"
+                                 Style="{StaticResource MenuButton}"
+                                 Padding="125, 0"
+                                 IsChecked="{Binding IsPizzasSelect}"
+                                 Command="{Binding NavigateToPizzasCommand}" />
+
+                    <RadioButton Content="Напитки"
+                                 Style="{StaticResource MenuButton}"
+                                 Padding="125, 0"
+                                 IsChecked="{Binding IsDrinksSelect}"
+                                 Command="{Binding NavigateToDrinksCommand}" />
+
+                </StackPanel>
+
+            </Grid>
+            
+        </Border>
+        
+    </Grid>
+</UserControl>
