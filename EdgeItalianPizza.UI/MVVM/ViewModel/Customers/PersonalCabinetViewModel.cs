@@ -66,7 +66,7 @@ internal class PersonalCabinetViewModel(
 
     private void LoadedCommandExecute(object obj)
     {
-        Model = new AuthCustomerModel
+        Model = new AuthCustomerModel(CustomerSessionInfo.Customer.DateOfBirth)
         {
             Id = CustomerSessionInfo.Customer.Id,
             PhoneNumber = CustomerSessionInfo.Customer.PhoneNumber,
@@ -101,6 +101,8 @@ internal class PersonalCabinetViewModel(
             DateOfBirthErrorMessage = response.ErrorMessage;
             return;
         }
+
+        DateOfBirthErrorMessage = string.Empty;
 
         CustomerSessionInfo.Customer.DateOfBirth = Model.DateOfBirth;
         CustomerSessionInfo.Customer.NotDateOfBirthHasValue = Model.NotDateOfBirthHasValue;

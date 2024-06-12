@@ -42,8 +42,8 @@ internal sealed class AuthCustomerModel : ObservableObject
         set
         {
             _dateOfBirth = value;
-            NotDateOfBirthHasValue = !value.HasValue;
-            DateOfBirthHasValue = value.HasValue;
+            NotDateOfBirthHasValue = value.HasValue;
+            DateOfBirthHasValue = !value.HasValue;
             OnPropertyChanged(nameof(DateOfBirth));
         }
     }
@@ -84,9 +84,9 @@ internal sealed class AuthCustomerModel : ObservableObject
         }
     }
 
-    public AuthCustomerModel()
+    public AuthCustomerModel(DateOnly? DateOfBirth)
     {
-        _notDateOfBirthHasValue = !DateOfBirth.HasValue;
-        _dateOfBirthHasValue = DateOfBirth.HasValue;
+        _notDateOfBirthHasValue = DateOfBirth.HasValue;
+        _dateOfBirthHasValue = !DateOfBirth.HasValue;
     }
 }

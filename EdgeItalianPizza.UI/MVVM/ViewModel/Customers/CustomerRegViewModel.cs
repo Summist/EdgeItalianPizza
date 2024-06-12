@@ -91,7 +91,7 @@ internal class CustomerRegViewModel(
 
         var value = response.Value;
 
-        CustomerSessionInfo.Customer = new CustomerSession
+        CustomerSessionInfo.Customer = new CustomerSession(value.DateOfBirth)
         { 
             Id = value.Id,
             PhoneNumber = value.PhoneNumber,

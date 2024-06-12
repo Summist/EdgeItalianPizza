@@ -115,9 +115,9 @@ internal sealed class CustomerSession : ObservableObject
         }
     }
 
-    public CustomerSession()
+    public CustomerSession(DateOnly? DateOfBirth)
     {
-        _notDateOfBirthHasValue = !DateOfBirth.HasValue;
-        _dateOfBirthHasValue = DateOfBirth.HasValue;
+        _notDateOfBirthHasValue = DateOfBirth.HasValue;
+        _dateOfBirthHasValue = !DateOfBirth.HasValue;
     }
 }
